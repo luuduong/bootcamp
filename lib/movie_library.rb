@@ -11,9 +11,36 @@ class MovieLibrary
     @movies.push(movie) unless include?(movie)
   end
 
+  def include?(movie)
+    find {|x| x.title == movie.title}
+  end
+
+  def find(&block)
+    @movies.each do |movie|
+      result = block.call(movie)
+      if result
+        return true
+      end
+    end
+    return nil
+  end
+
   def total_count
     @movies.size
   end
+
+  def find_all_movies_by_pixar
+  #get movies that are made by pixar
+  @pixar_movies = []
+  @pixar_movies = @movies.select {|x| x.studio == Studio::Pixar}
+
+  end
+
+  def count
+    @movies.size
+  end
+
+
 
   def each
     # @movies.count.times do |n|

@@ -2,6 +2,8 @@ require "spec_helper"
 
 class FizzBuzz
   def run(input)
+   puts "result for #{input} is #{input % 3 == 0 ? 'Fizz' : input % 5 == 0 ? 'Buzz' : 'FizzBuzz'}"
+   #puts "result is #{input}"
   end
 end
 
